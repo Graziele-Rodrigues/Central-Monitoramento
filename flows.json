@@ -39,16 +39,9 @@
         "tab": "6f670e80.d2e0f",
         "order": 1,
         "disp": true,
-        "width": "6",
+        "width": "7",
         "collapse": false,
         "className": ""
-    },
-    {
-        "id": "6f670e80.d2e0f",
-        "type": "ui_tab",
-        "z": "5e04b9dd.81c658",
-        "name": "Dashboard",
-        "icon": "dashboard"
     },
     {
         "id": "3966a863e3e877f2",
@@ -148,6 +141,15 @@
         }
     },
     {
+        "id": "6f670e80.d2e0f",
+        "type": "ui_tab",
+        "z": "5e04b9dd.81c658",
+        "name": "Bancada Embarcados",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
         "id": "235eb13c.0e6e6e",
         "type": "mqtt in",
         "z": "5e04b9dd.81c658",
@@ -159,8 +161,8 @@
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 130,
-        "y": 360,
+        "x": 150,
+        "y": 320,
         "wires": [
             [
                 "7e75f56e.a3ef1c",
@@ -181,8 +183,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 341,
-        "y": 314,
+        "x": 361,
+        "y": 274,
         "wires": []
     },
     {
@@ -210,13 +212,13 @@
         "id": "89bc352.e41bac8",
         "type": "ui_gauge",
         "z": "5e04b9dd.81c658",
-        "name": "Humidity",
+        "name": "Umidade",
         "group": "92a9cd27.99b9d",
         "order": 0,
         "width": 0,
         "height": 0,
         "gtype": "gage",
-        "title": "Humidity",
+        "title": "Umidade",
         "label": "%",
         "format": "{{value}}",
         "min": 0,
@@ -250,8 +252,8 @@
         "interpolate": "linear",
         "nodata": "",
         "dot": false,
-        "ymin": "",
-        "ymax": "",
+        "ymin": "0",
+        "ymax": "50",
         "removeOlder": 1,
         "removeOlderPoints": "",
         "removeOlderUnit": "3600",
@@ -272,8 +274,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 341,
-        "y": 374,
+        "x": 361,
+        "y": 334,
         "wires": [
             []
         ]
@@ -307,8 +309,8 @@
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 140,
-        "y": 500,
+        "x": 120,
+        "y": 460,
         "wires": [
             [
                 "de759a0beb36acbc",
@@ -329,8 +331,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 357,
-        "y": 467,
+        "x": 370,
+        "y": 400,
         "wires": []
     },
     {
@@ -342,23 +344,24 @@
         "order": 0,
         "width": 0,
         "height": 0,
-        "gtype": "gage",
+        "gtype": "compass",
         "title": "Iluminacao",
         "label": "%",
         "format": "{{value}}",
         "min": 0,
         "max": "100",
         "colors": [
-            "#00b3d9",
-            "#0073e6",
-            "#001bd7"
+            "#fdd053",
+            "#ffc800",
+            "#ee943f"
         ],
         "seg1": "33",
         "seg2": "66",
         "diff": false,
         "className": "",
-        "x": 390,
-        "y": 540,
-        "wires": []
+        "x": 370,
+        "y": 500,
+        "wires": [],
+        "icon": "font-awesome/fa-level-up"
     }
 ]

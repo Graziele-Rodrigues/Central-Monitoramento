@@ -339,20 +339,6 @@ CONFIG_PARTITION_TABLE_MD5=y
 # end of Partition Table
 
 #
-# MQTT Configuration
-#
-CONFIG_BROKER_URL="mqtt://broker.hivemq.com"
-# end of MQTT Configuration
-
-#
-# WiFi Configuration
-#
-CONFIG_ESP_WIFI_SSID="AP_301VERO"
-CONFIG_ESP_WIFI_PASSWORD="112358301"
-CONFIG_ESP_MAXIMUM_RETRY=10
-# end of WiFi Configuration
-
-#
 # Compiler options
 #
 CONFIG_COMPILER_OPTIMIZATION_DEFAULT=y

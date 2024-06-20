@@ -15,9 +15,9 @@
 
 #include "wifi.h"
 
-#define EXAMPLE_ESP_WIFI_SSID      CONFIG_ESP_WIFI_SSID
-#define EXAMPLE_ESP_WIFI_PASS      CONFIG_ESP_WIFI_PASSWORD
-#define EXAMPLE_ESP_MAXIMUM_RETRY  CONFIG_ESP_MAXIMUM_RETRY
+#define EXAMPLE_ESP_WIFI_SSID      "AP_301VERO"
+#define EXAMPLE_ESP_WIFI_PASS      "112358301"
+#define EXAMPLE_ESP_MAXIMUM_RETRY  10
 
 /* FreeRTOS event group to signal when we are connected*/
 static EventGroupHandle_t s_wifi_event_group;
@@ -227,7 +227,7 @@ esp_err_t wifi_init_sta(void)
         .sta = {
             .ssid = EXAMPLE_ESP_WIFI_SSID,              //wifi ssid
             .password = EXAMPLE_ESP_WIFI_PASS,          //wifi password
-	        .threshold.authmode = WIFI_AUTH_WPA2_PSK,   //wifi authentication mode
+	        //.threshold.authmode = WIFI_AUTH_WPA2_PSK,   //wifi authentication mode
             .pmf_cfg = {                                //wifi pmf configuration
                 .capable = true,                        //wifi capable
                 .required = false                       //wifi required     

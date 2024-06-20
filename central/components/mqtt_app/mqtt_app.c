@@ -5,8 +5,7 @@
 
 static const char *TAG = "MQTT Client";
 
-static esp_mqtt_client_handle_t client; //handler for mqtt client
-#define EXAMPLE_BROKER_URL     CONFIG_BROKER_URL
+static esp_mqtt_client_handle_t client; 
 
 
 /*
@@ -53,7 +52,7 @@ void mqtt_app_start(void)
 {
     //config mqtt client
     esp_mqtt_client_config_t esp_mqtt_client_config = {
-        .broker.address.uri = EXAMPLE_BROKER_URL, //mqtt broker url
+        .broker.address.uri = "mqtt://broker.hivemq.com", //mqtt broker url
         .broker.address.port = 1883,                            //mqtt broker port
         };
     client = esp_mqtt_client_init(&esp_mqtt_client_config);                             //initialize mqtt client
