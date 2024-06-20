@@ -12,6 +12,13 @@
 *.map
 *.exp
 
+# Ignore build and .vscode directories
+/central/build/
+/central/.vscode/
+/central/sdkconfig
+/central/sdkconfig.old
+
+
 # Precompiled Headers
 *.gch
 *.pch
@@ -51,5 +58,3 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-/central/build/
-/central/.vscode/

@@ -64,13 +64,12 @@ void app_main(void)
         char temperature_str[10];                                           //string to store temperature    
         char humidity_str[10];                                              //string to store humidity
         char ldr_str[10];                                                   //string to store ldr     
-        //leitura dht 
-        dht_read_data(sensor_type,dht_gpio,&humidity,&temperature);
-        //LOG 
+        dht_read_data(sensor_type, dht_gpio, &humidity,&temperature);               //leitura dht 
         ESP_LOGI(TAG, "humidity: %d %%" ,humidity);                          //print the humidity   
         ESP_LOGI(TAG, "Temperature: %d C", temperature);                     //print the temperature
         ldr = ldr_sensor_read_percentage();                                  //leitura ldr
         ESP_LOGI(TAG, "Percentage: %d C", ldr);
+
         sprintf(temperature_str,"%d",temperature);                           //convert to string
         sprintf(humidity_str,"%d",humidity);                                 //convert to string
         sprintf(ldr_str,"%d",ldr);                                            //convert to strinh
