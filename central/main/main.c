@@ -86,7 +86,7 @@ void ldr_task(void *pvParameters) {
     ldr_sensor_init();
 
     while (1) {
-        ldr = ldr_sensor_read_percentage();
+        ldr = ldr_sensor_get_percentage();
         ESP_LOGI(TAG, "Percentagem iluminacao: %d %%", ldr);
 
         sensor_data_t sensor_data;
@@ -113,6 +113,6 @@ void app_main(void) {
     sensor_data_queue = xQueueCreate(10, sizeof(sensor_data_t));
 
     xTaskCreate(&wifi_mqtt_task, "wifi_mqtt_task", 4096, NULL, 5, NULL);
-    xTaskCreate(&dht_task, "dht_task", 2048, NULL, 10, NULL);  
-    xTaskCreate(&ldr_task, "ldr_task", 2048, NULL, 10, NULL);  
+    xTaskCreate(&dht_task, "dht_task", 2048, NULL, 5, NULL);  
+    xTaskCreate(&ldr_task, "ldr_task", 2048, NULL, 5, NULL);  
 }
