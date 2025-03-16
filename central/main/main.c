@@ -15,7 +15,7 @@
 
 // DHT11 configuration
 #define SENSOR_TYPE DHT_TYPE_DHT11
-#define DHT_GPIO_PIN GPIO_NUM_12
+#define DHT_GPIO_PIN GPIO_NUM_15
 
 // Tag for logging
 static const char *TAG = "MQTT Example";

@@ -7,149 +7,6 @@
         "info": ""
     },
     {
-        "id": "6ec4dcef.913b24",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "broker.hivemq.com",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "15",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
-        "id": "92a9cd27.99b9d",
-        "type": "ui_group",
-        "name": "Central Monitoramento",
-        "tab": "6f670e80.d2e0f",
-        "order": 1,
-        "disp": true,
-        "width": "7",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "3966a863e3e877f2",
-        "type": "ui_base",
-        "theme": {
-            "name": "theme-light",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "widget-backgroundColor": {
-                    "value": "#0094ce",
-                    "edited": false
-                },
-                "widget-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey",
-                "palette": "light"
-            }
-        },
-        "site": {
-            "name": "Node-RED Dashboard",
-            "hideToolbar": "false",
-            "allowSwipe": "false",
-            "lockMenu": "false",
-            "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            }
-        }
-    },
-    {
-        "id": "6f670e80.d2e0f",
-        "type": "ui_tab",
-        "z": "5e04b9dd.81c658",
-        "name": "Bancada Embarcados",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "235eb13c.0e6e6e",
         "type": "mqtt in",
         "z": "5e04b9dd.81c658",
@@ -157,7 +14,7 @@
         "topic": "esp32-central/temperatura",
         "qos": "0",
         "datatype": "auto-detect",
-        "broker": "6ec4dcef.913b24",
+        "broker": "38ecf3d13bf18e0a",
         "nl": false,
         "rap": false,
         "inputs": 0,
@@ -166,7 +23,7 @@
         "wires": [
             [
                 "7e75f56e.a3ef1c",
-                "125d1072.694a2"
+                "240470b66c98adc9"
             ]
         ]
     },
@@ -195,7 +52,7 @@
         "topic": "esp32-central/umidade",
         "qos": "0",
         "datatype": "auto-detect",
-        "broker": "6ec4dcef.913b24",
+        "broker": "38ecf3d13bf18e0a",
         "nl": false,
         "rap": false,
         "inputs": 0,
@@ -214,13 +71,13 @@
         "z": "5e04b9dd.81c658",
         "name": "Umidade",
         "group": "92a9cd27.99b9d",
-        "order": 0,
+        "order": 2,
         "width": 0,
         "height": 0,
-        "gtype": "gage",
+        "gtype": "wave",
         "title": "Umidade",
         "label": "%",
-        "format": "{{value}}",
+        "format": "{{value/10}}",
         "min": 0,
         "max": "100",
         "colors": [
@@ -235,50 +92,6 @@
         "x": 340,
         "y": 180,
         "wires": []
-    },
-    {
-        "id": "125d1072.694a2",
-        "type": "ui_chart",
-        "z": "5e04b9dd.81c658",
-        "name": "Temperatura",
-        "group": "92a9cd27.99b9d",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "Temperatura",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "50",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 361,
-        "y": 334,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "07048bb50e4963b7",
@@ -298,70 +111,82 @@
         "wires": []
     },
     {
-        "id": "0df6cff2a4206411",
-        "type": "mqtt in",
-        "z": "5e04b9dd.81c658",
-        "name": "",
-        "topic": "esp32-central/ldr",
-        "qos": "0",
-        "datatype": "auto-detect",
-        "broker": "6ec4dcef.913b24",
-        "nl": false,
-        "rap": false,
-        "inputs": 0,
-        "x": 120,
-        "y": 460,
-        "wires": [
-            [
-                "de759a0beb36acbc",
-                "6afbc12ba15b133d"
-            ]
-        ]
-    },
-    {
-        "id": "de759a0beb36acbc",
-        "type": "debug",
-        "z": "5e04b9dd.81c658",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 370,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "6afbc12ba15b133d",
+        "id": "240470b66c98adc9",
         "type": "ui_gauge",
         "z": "5e04b9dd.81c658",
-        "name": "Iluminacao",
+        "name": "Temperatura",
         "group": "92a9cd27.99b9d",
-        "order": 0,
+        "order": 1,
         "width": 0,
         "height": 0,
-        "gtype": "compass",
-        "title": "Iluminacao",
-        "label": "%",
-        "format": "{{value}}",
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "°C",
+        "format": "{{value/10}}",
         "min": 0,
-        "max": "100",
+        "max": "50",
         "colors": [
-            "#fdd053",
-            "#ffc800",
-            "#ee943f"
+            "#f55151",
+            "#ee6c63",
+            "#d62000"
         ],
         "seg1": "33",
         "seg2": "66",
         "diff": false,
         "className": "",
-        "x": 370,
-        "y": 500,
-        "wires": [],
-        "icon": "font-awesome/fa-level-up"
+        "x": 390,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "38ecf3d13bf18e0a",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.emqx.io",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "92a9cd27.99b9d",
+        "type": "ui_group",
+        "name": "Central Monitoramento",
+        "tab": "6f670e80.d2e0f",
+        "order": 1,
+        "disp": true,
+        "width": "7",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6f670e80.d2e0f",
+        "type": "ui_tab",
+        "z": "5e04b9dd.81c658",
+        "name": "Bancada Embarcados",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     }
 ]

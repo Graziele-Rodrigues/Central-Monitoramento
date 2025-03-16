@@ -52,7 +52,7 @@ void mqtt_app_start(void)
 {
     //config mqtt client
     esp_mqtt_client_config_t esp_mqtt_client_config = {
-        .broker.address.uri = "mqtt://broker.hivemq.com", //mqtt broker url
+        .broker.address.uri = "mqtt://broker.emqx.io", //mqtt broker url
         .broker.address.port = 1883,                            //mqtt broker port
         };
     client = esp_mqtt_client_init(&esp_mqtt_client_config);                             //initialize mqtt client

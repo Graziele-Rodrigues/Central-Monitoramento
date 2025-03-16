@@ -6,7 +6,7 @@
 
 #define EXAMPLE_ADC_ATTEN ADC_ATTEN_DB_11
 #define EXAMPLE_ADC_UNIT ADC_UNIT_2
-#define EXAMPLE_ADC_CHANNEL ADC_CHANNEL_3
+#define EXAMPLE_ADC_CHANNEL ADC_CHANNEL_1
 
 static const char *TAG = "LDR_SENSOR";
 int ldr_value;

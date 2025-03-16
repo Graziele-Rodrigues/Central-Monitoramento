@@ -12,11 +12,13 @@
 
 #include "lwip/err.h"
 #include "lwip/sys.h"
+#include <lwip/sockets.h>
+#include <lwip/netdb.h>
 
 #include "wifi.h"
 
-#define EXAMPLE_ESP_WIFI_SSID      "AP_301VERO"
-#define EXAMPLE_ESP_WIFI_PASS      "112358301"
+#define EXAMPLE_ESP_WIFI_SSID      "ssid"
+#define EXAMPLE_ESP_WIFI_PASS      "senha"
 #define EXAMPLE_ESP_MAXIMUM_RETRY  10
 
 /* FreeRTOS event group to signal when we are connected*/
@@ -33,7 +35,7 @@ static bool attempt_reconnect = false;      //attempt reconnect
   
 char *get_wifi_disconnection_string(wifi_err_reason_t wifi_err_reason)
 {
-    switch (wifi_err_reason)            //switch wifi error reason
+    switch (wifi_err_reason)
     {
     case WIFI_REASON_UNSPECIFIED:
         return "WIFI_REASON_UNSPECIFIED";
@@ -149,9 +151,16 @@ char *get_wifi_disconnection_string(wifi_err_reason_t wifi_err_reason)
         return "WIFI_REASON_ASSOC_COMEBACK_TIME_TOO_LONG";
     case WIFI_REASON_SA_QUERY_TIMEOUT:
         return "WIFI_REASON_SA_QUERY_TIMEOUT";
+    case WIFI_REASON_NO_AP_FOUND_W_COMPATIBLE_SECURITY:
+        return "WIFI_REASON_NO_AP_FOUND_W_COMPATIBLE_SECURITY";
+    case WIFI_REASON_NO_AP_FOUND_IN_AUTHMODE_THRESHOLD:
+        return "WIFI_REASON_NO_AP_FOUND_IN_AUTHMODE_THRESHOLD";
+    case WIFI_REASON_NO_AP_FOUND_IN_RSSI_THRESHOLD:
+        return "WIFI_REASON_NO_AP_FOUND_IN_RSSI_THRESHOLD";
     }
     return "UNKNOWN";
 }
+
 
 static void event_handler(void* arg, esp_event_base_t event_base,
                                 int32_t event_id, void* event_data)
@@ -227,18 +236,23 @@ esp_err_t wifi_init_sta(void)
         .sta = {
             .ssid = EXAMPLE_ESP_WIFI_SSID,              //wifi ssid
             .password = EXAMPLE_ESP_WIFI_PASS,          //wifi password
-	        //.threshold.authmode = WIFI_AUTH_WPA2_PSK,   //wifi authentication mode
             .pmf_cfg = {                                //wifi pmf configuration
                 .capable = true,                        //wifi capable
                 .required = false                       //wifi required     
             },
         },
     };
-    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA) );                 //set wifi mode
-    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config) );   //set wifi configuration
-    ESP_ERROR_CHECK(esp_wifi_start() );                                 //start wifi        
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));                 //set wifi mode
+    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config));   //set wifi configuration
+    ESP_ERROR_CHECK(esp_wifi_start());                                 //start wifi        
 
     ESP_LOGI(TAG, "wifi_init_sta finished.");                           //log wifi initialization finished
+
+    // Set DNS (Google DNS for example)
+    esp_netif_dns_info_t dns;
+    dns.ip.u_addr.ip4.addr = ESP_IP4TOADDR(8, 8, 8, 8); // Google DNS
+    dns.ip.type = ESP_IPADDR_TYPE_V4;
+    ESP_ERROR_CHECK(esp_netif_set_dns_info(esp_netif, ESP_NETIF_DNS_MAIN, &dns));
 
     /* Waiting until either the connection is established (WIFI_CONNECTED_BIT) or connection failed for the maximum
      * number of re-tries (WIFI_FAIL_BIT). The bits are set by event_handler() (see above) */
@@ -262,6 +276,7 @@ esp_err_t wifi_init_sta(void)
     }
     return ESP_FAIL;                                                //return fail
 }
+
 
 
 void wifi_connect_ap(const char *ssid, const char *pass)
